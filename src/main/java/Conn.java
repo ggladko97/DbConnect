@@ -11,12 +11,13 @@ import java.sql.Statement;
  */
 public class Conn {
 
-    // JDBC URL, username and password of MySQL server
+    //private static final names are all UPPER_CASE
     private static final String url = "jdbc:mysql://localhost:3306/blink";
     private static final String user = "root";
     private static final String password = "password";
 
-    // JDBC variables for opening and managing connection
+    // create class for creating connection, with 1 method:  getConnection()
+    //use  it in main()block like lokal  variable  without static.  same with  stmt and rs
     private static Connection con;
     private static Statement stmt;
     private static ResultSet rs;
@@ -39,6 +40,7 @@ public class Conn {
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         } finally {
+            //its OK.  but read about  the purpose of try-catches inside finally block
             //close connection ,stmt and resultset here
             try { con.close(); } catch(SQLException se) { /*can't do anything */ }
             try { stmt.close(); } catch(SQLException se) { /*can't do anything */ }
